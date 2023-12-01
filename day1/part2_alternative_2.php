@@ -1,4 +1,6 @@
 <?php
+$time_start = microtime(true);
+
 $input = array_map(function($a) {
     $replace = array('one' => 'one1one', 'two' => 'two2two', 'three' => 'three3three', 'four' => 'four4four', 'five' => 'five5five', 'six' => 'six6six', 'seven' => 'seven7seven', 'eight' => 'eight8eight', 'nine' => 'nine9nine');
 
@@ -17,3 +19,4 @@ $input = array_map(function($a) {
 $sum = array_sum($input);
 
 echo 'Sum: ' . $sum . PHP_EOL;
+echo 'Total execution time in ms: ' . (microtime(true) - $time_start) * 1000 . PHP_EOL;
