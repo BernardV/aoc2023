@@ -1,4 +1,5 @@
 <?php
+$time_start = microtime(true);
 $input = file('input.txt', FILE_IGNORE_NEW_LINES);
 $l = strlen($input[0]);
 $h = count($input);
@@ -34,6 +35,7 @@ foreach ($flat as $key => $value) {
                     $gearPos = $dpos;
                 }
                 $symbolFound = true;
+                break;
             }
         }
     } else {
@@ -67,3 +69,4 @@ $gearSum = array_sum($filteredGears);
 
 echo 'Part 1 sum: ' . $sum . PHP_EOL;
 echo 'Part 2 sum: ' . $gearSum . PHP_EOL;
+echo 'Total execution time in ms: ' . (microtime(true) - $time_start) * 1000 . PHP_EOL;
