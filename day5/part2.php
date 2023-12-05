@@ -1,5 +1,6 @@
 <?php
-$input = file('input.txt', FILE_IGNORE_NEW_LINES);
+$time_start = microtime(true);
+$input = file('test.txt', FILE_IGNORE_NEW_LINES);
 
 $maps = array();
 $seeds = array();
@@ -69,6 +70,8 @@ foreach ($maps as $mapname=>$map)
                     $seedPairs[] = $new;
                 }
 
+            } elseif($sStart < $mapitem['start'] && $sStart + $sLength >= $mapitem['start']) {
+                //Not sure if this is needed, for now it works without it
             }
         }
         $seedPairsNew[] = $seedPair;
@@ -82,3 +85,4 @@ foreach ($seedPairs as $seedPair)
 }
 
 echo 'Lowest location: ' . $lowestLocation . PHP_EOL;
+echo 'Total execution time in ms: ' . (microtime(true) - $time_start) * 1000 . PHP_EOL;
