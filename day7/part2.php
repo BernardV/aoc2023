@@ -1,20 +1,20 @@
 <?php
 
-$input = file('input.txt', FILE_IGNORE_NEW_LINES);
+$input = file('aoc-2023-day-07-challenge-1.txt', FILE_IGNORE_NEW_LINES);
 
 $cards = array();
 
 foreach ($input as $line) {
     $temp = explode(' ', $line);
-    $cards[] = array('hand'=>$temp[0], 'bid'=>(int)$temp[1]);
+    $cards[] = array('hand'=>$temp[0], 'bid'=>(int)$temp[1], 'value'=>calculateValue($temp[0]));
 }
 
 usort($cards, 'sortHands');
 
 function sortHands ($a, $b)
 {
-    $hand1Value = calculateValue($a['hand']);
-    $hand2Value = calculateValue($b['hand']);
+    $hand1Value = $a['value'];
+    $hand2Value = $b['value'];
 
     $cardValues = array('J'=>1, '2'=>2, '3'=>3, '4'=>4, '5'=>5, '6'=>6, '7'=>7, '8'=>8, '9'=>9, 'T'=>10, 'Q'=>12, 'K'=>13, 'A'=>14);
     if($hand1Value == $hand2Value) {
